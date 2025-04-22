@@ -1,0 +1,19 @@
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority-data: DATA+OMITTED
+    server: https://127.0.0.1:64892
+  name: kind-kratix
+contexts:
+- context:
+    cluster: kind-kratix
+    user: kind-kratix
+  name: kind-kratix
+current-context: kind-kratix
+kind: Config
+preferences: {}
+users:
+- name: kind-kratix
+  user:
+    client-certificate-data: DATA+OMITTED
+    client-key-data: DATA+OMITTED
