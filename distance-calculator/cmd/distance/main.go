@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/saneaizog/distance-calculator/internal/calculator"
+	"github.com/saneaizog/kratix/tree/main/distance-calculator/distance-calculator/internal/calculator"
 )
 
 func main() {
