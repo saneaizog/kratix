@@ -1,3 +1,3 @@
-module github.com/saneaizog/kratix/tree/main/distance-calculator
+module github.com/saneaizog/kratix
 
-go 1.24.2
+go 1.22.0
