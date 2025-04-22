@@ -7,7 +7,10 @@ metadata:
 spec:
   containers:
   - name: distance-calculator
-    image: distance-calculator1:v1.0.0
+    image: distance-calculator1:v1.1.0
     imagePullPolicy: IfNotPresent
+    envFrom:
+    - configMapRef:
+        name: distance-config
     stdin: true
     tty: true 
