@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: distance-calculator
+  labels:
+    app: distance-calculator
+spec:
+  replicas: 1  
+  selector:
+    matchLabels:
+      app: distance-calculator
+  template:
+    metadata:
+      labels:
+        app: distance-calculator
+    spec:
+      containers:
+      - name: distance-calculator
+        image: distance-calculator1:v1.1.0
+        command: ["./distance-calculator"]
+        ports:
+          - containerPort: 8080
+            protocol: TCP
+        envFrom:
+          - configMapRef:
+              name: postgres-config
+          - secretRef:
+              name: db-secret-credentials
+        stdin: true  
+        tty: true    
+ 

@@ -1,0 +1,9 @@
+# postgres-config.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-config
+data:
+  DB_HOST: "postgres-service.database"  # Формат: <имя-сервиса>.<namespace>
+  DB_PORT: "5432"
+  DB_NAME: "distancedb"
