@@ -1,0 +1,11 @@
+apiVersion: platform.kratix.io/v1alpha1
+kind: GitStateStore
+metadata:
+  name: saneaizog-repo
+spec:
+  url: "https://github.com/saneaizog/kratix.git"
+  branch: "main"
+  path: "./kratix-state"
+  secretRef:
+    name: git-credentials
+    namespace: kratix-platform-system 
