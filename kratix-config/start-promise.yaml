@@ -1,0 +1,51 @@
+apiVersion: platform.kratix.io/v1alpha1
+kind: Promise
+metadata:
+  name: simple-hello
+spec:
+  api:
+    apiVersion: apiextensions.k8s.io/v1
+    kind: CustomResourceDefinition
+    metadata:
+      name: simplehellos.example.com
+    spec:
+      group: example.com
+      versions:
+        - name: v1
+          served: true
+          storage: true
+          schema:
+            openAPIV3Schema:
+              type: object
+              properties:
+                spec:
+                  type: object
+                  properties:
+                    message:
+                      type: string
+      scope: Namespaced
+      names:
+        plural: simplehellos
+        singular: simplehello
+        kind: SimpleHello
+
+  workflows:
+    resource:
+      configure:
+        - apiVersion: platform.kratix.io/v1alpha1
+          kind: Pipeline
+          metadata:
+            name: simple-hello-pipeline
+          spec:
+            containers:
+              - name: hello
+                image: alpine
+                command: ["/bin/sh", "-c"]
+                args: ["echo \"$(cat /kratix/input/object.yaml | grep message | cut -d':' -f2)\" > /data/hello.txt"]
+                volumeMounts:
+                  - name: storage
+                    mountPath: /data
+            volumes:
+              - name: storage
+                persistentVolumeClaim:
+                  claimName: hello-storage-pvc

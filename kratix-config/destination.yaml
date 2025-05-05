@@ -1,0 +1,9 @@
+apiVersion: platform.kratix.io/v1alpha1
+kind: Destination
+metadata:
+  name: worker-cluster
+spec:
+  stateStoreRef:
+    name: saneaizog-repo
+    kind: GitStateStore
+  path: ./kratix-state/worker-cluster
